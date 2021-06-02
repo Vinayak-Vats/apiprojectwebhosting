@@ -1,3 +1,4 @@
+
 const express = require("express");               //for require express
 
 require("./db/conn");
@@ -82,7 +83,7 @@ app.use(express.json());
 
   
 
-  //reading data of registered coaching(i.e. handling GET request). this will give us all the data
+  // reading data of registered coaching(i.e. handling GET request). this will give us all the data
 
   app.get("/coaching",async(req,res) => {
 
@@ -95,67 +96,113 @@ app.use(express.json());
 })
 
 
-app.listen(port,() => {
-         console.log(`listening at ${port}`);
-       })  
+//  app.listen(port,() => {
+//           console.log(`listening at ${port}`);
+//         })  
 
-//reading data of exams (i.e. handling GET request). this will give us all the data
+// reading data of exams (i.e. handling GET request). this will give us all the data
 
-// app.get("/exams",async(req,res) => {
+app.get("/exams",async(req,res) => {
 
-//     try{
-//     const examData = await Exam.find();
-//     res.status(201).send(examData);
+    try{
+    const examData = await Exam.find();
+    res.status(201).send(examData);
 
-//     }catch(e){ res.status(400).send(e);}
+    }catch(e){ res.status(400).send(e);}
 
-// })
-
-
-// app.listen(port,() => {
-//          console.log(`listening at ${port}`);
-//        }) 
-
-//reading data of resources (i.e. handling GET request). this will give us all the data
-
-// app.get("/resources",async(req,res) => {
-
-//     try{
-//     const resourceData = await Resource.find();
-//     res.status(201).send(resourceData);
-
-//     }catch(e){ res.status(400).send(e);}
-
-// })
+})
 
 
-// app.listen(port,() => {
-//          console.log(`listening at ${port}`);
+//  app.listen(port,() => {
+//           console.log(`listening at ${port}`);
+//         }) 
+
+// reading data of resources (i.e. handling GET request). this will give us all the data
+
+app.get("/resources",async(req,res) => {
+
+    try{
+    const resourceData = await Resource.find();
+    res.status(201).send(resourceData);
+
+    }catch(e){ res.status(400).send(e);}
+
+})
+
+
+//  app.listen(port,() => {
+//           console.log(`listening at ${port}`);
 //        }) 
     
 
 
-//getting data of individual student
-// app.get("/students/:id",async(req,res) => {
+// getting data of individual coaching
+  app.get("/coaching/:id",async(req,res) => {
 
-//   try{
-//   const _id = req.params.id;
-//   const studentData = await Student.findById(_id);
-//   console.log(studentData);  
-//     if(!studentData){
-//         return res.status(404).send();        
-//     }else{
-//       res.status(201).send(studentData);
-//     }
+  try{
+  const _id = req.params.id;
+  const coachData = await Coaching.findById(_id);
+  console.log(coachData);  
+    if(!coachData){
+        return res.status(404).send();        
+    }else{
+      res.status(201).send(coachData);
+    }
 
-//   }catch(e){ res.status(400).send(e);}
+  }catch(e){ res.status(400).send(e);}
 
-// })
+})
 
 
-// app.listen(port,() => {
-//        console.log(`listening at ${port}`);
-//      })      
+//  app.listen(port,() => {
+//         console.log(`listening at ${port}`);
+//       })  
+
+
+// //getting data of individual exam
+app.get("/exams/:id",async(req,res) => {
+
+  try{
+  const _id = req.params.id;
+  const examData = await Exam.findById(_id);
+  console.log(examData);  
+    if(!examData){
+        return res.status(404).send();        
+    }else{
+      res.status(201).send(examData);
+    }
+
+  }catch(e){ res.status(400).send(e);}
+
+})
+
+
+//  app.listen(port,() => {
+//         console.log(`listening at ${port}`);
+//       })  
+
+// getting data of individual resource
+app.get("/resources/:id",async(req,res) => {
+
+  try{
+  const _id = req.params.id;
+  const resourceData = await Resource.findById(_id);
+  console.log(resourceData);  
+    if(!resourceData){
+        return res.status(404).send();        
+    }else{
+      res.status(201).send(resourceData);
+    }
+
+  }catch(e){ res.status(400).send(e);}
+
+})
+
+
+app.listen(port,() => {
+       console.log(`listening at ${port}`);
+     })  
+
 
 
 // TO put/patch REQUEST USING API

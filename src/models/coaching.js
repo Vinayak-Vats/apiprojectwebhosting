@@ -2,22 +2,54 @@ const mongoose = require ("mongoose");
 const validator = require ("validator");
 
 const coachSchema = new mongoose.Schema({
-    Name : {type:String,
-            Required:true,
-            minlength:4 ,                  //setting minimum length . only used for a string
-             },               
-            
+    Coaching_Name : 
+            {type:String,
+            Required:true
+            },                           
     
-    Address:{
+    Subject:{
             type:String,
             required:true
             },
     
-    Contact:{
+    Faculty_Name:{
         type:String,
         required:true
         },
 
+    Teaching_experience: {
+        type:String,
+        Required:true
+             },
+
+    Exam:{
+        type:String,
+        Required: true
+    },
+
+    Address:{
+    type:String,
+    Required:true
+    },
+
+    Address2:{
+        type:String,
+        Required:true
+    },
+
+    Contact:{
+        type:String,
+        Required:true,
+        Unique:false,
+    },
+    State:{
+        type:String,
+        Required:true
+    },
+    City:{
+        type:String,
+        Required:true
+    },
     Email: {
         type:String,
         Required:true,
@@ -27,34 +59,8 @@ const coachSchema = new mongoose.Schema({
                 throw new Error("Invalid Email")
             }
         }
-    },
-    Subjects: {
-        type:String,
-        Required:true,
-             },
-
-    Exam:{
-        type:String,
-        Required: true
-    },
-
-    Faculty:{
-    type:String,
-    Required:true,
-    },
-
-    Experience:{
-        type:String,
-        Required:true,
-    },
-
-    Website:{
-        type:String,
-        Required:true,
-    }
-
-     
-})
+     }
+     })
 
 //creating a new collection
 
