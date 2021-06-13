@@ -25,12 +25,17 @@ const examschema = new mongoose.Schema({
 
     Eligibility_Criteria: {
         type:String,
-        Required:true,
+        Required:true
              },
 
     Registeration_Form_Link:{
         type:String,
         Required: true
+    },
+
+    Image_url:{
+        type:String,
+        Required:true
     }
 })
 

@@ -6,16 +6,23 @@ require("./db/conn");
 const Coaching = require("./models/coaching");
 const Resource = require("./models/resources");
 const Exam = require("./models/exams");
+const Sign_up = require("./models/sign_up");
 
 const app = express(); 
 const port = process.env.PORT || 7001;
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Methods","GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers","Content-Type");
+  next();
+})
 app.use(express.json());
 
 
 //create a new student using promise function
 
-// app.post("/students",(req,res) =>{                                          // getting data
+//  app.post("/students",(req,res) =>{                                          // getting data
     
 //     console.log(req.body);
 //     const user = new Student(req.body);
@@ -78,18 +85,36 @@ app.use(express.json());
 
 // app.listen(port,() => {
 //     console.log(`listening at ${port}`);
-//   })       
+//   }) 
+
+
+// POST USING ASYNC AWAIT FOR SIGN UP PAGE
+//  app.post("/sign_up",async(req,res) => {
+//      const user = new Sign_up(req.body);
+
+//  try{
+//      const user = new Sign_up(req.body);
+//      const createUser = await user.save();
+//      res.status(201).send(createUser);
+
+//  }catch(e){ res.status(400).send(e);}
+
+//  })
+
+//  app.listen(port,() => {
+//      console.log(`listening at ${port}`);
+//    }) 
 
 
   
 
-  // reading data of registered coaching(i.e. handling GET request). this will give us all the data
+// //   reading data of registered coaching(i.e. handling GET request). this will give us all the data
 
   app.get("/coaching",async(req,res) => {
 
     try{
     const coachData = await Coaching.find();
-    res.status(201).send(coachData);
+    res.status(200).send(coachData);
 
     }catch(e){ res.status(400).send(e);}
 
@@ -106,7 +131,7 @@ app.get("/exams",async(req,res) => {
 
     try{
     const examData = await Exam.find();
-    res.status(201).send(examData);
+    res.status(200).send(examData);
 
     }catch(e){ res.status(400).send(e);}
 
@@ -123,7 +148,7 @@ app.get("/resources",async(req,res) => {
 
     try{
     const resourceData = await Resource.find();
-    res.status(201).send(resourceData);
+    res.status(200).send(resourceData);
 
     }catch(e){ res.status(400).send(e);}
 
@@ -133,6 +158,22 @@ app.get("/resources",async(req,res) => {
 //  app.listen(port,() => {
 //           console.log(`listening at ${port}`);
 //        }) 
+
+//  GETTING DATA FOR THE SIGN UP PAGE
+app.get("/sign_up",async(req,res) => {
+
+  try{
+  const sign_upData = await Sign_up.find();
+  res.status(200).send(sign_upData);
+
+  }catch(e){ res.status(400).send(e);}
+
+})
+
+
+// app.listen(port,() => {
+//         console.log(`listening at ${port}`);
+//       }) 
     
 
 
@@ -146,7 +187,7 @@ app.get("/resources",async(req,res) => {
     if(!coachData){
         return res.status(404).send();        
     }else{
-      res.status(201).send(coachData);
+      res.status(200).send(coachData);
     }
 
   }catch(e){ res.status(400).send(e);}
@@ -169,7 +210,7 @@ app.get("/exams/:id",async(req,res) => {
     if(!examData){
         return res.status(404).send();        
     }else{
-      res.status(201).send(examData);
+      res.status(200).send(examData);
     }
 
   }catch(e){ res.status(400).send(e);}
@@ -191,7 +232,7 @@ app.get("/resources/:id",async(req,res) => {
     if(!resourceData){
         return res.status(404).send();        
     }else{
-      res.status(201).send(resourceData);
+      res.status(200).send(resourceData);
     }
 
   }catch(e){ res.status(400).send(e);}

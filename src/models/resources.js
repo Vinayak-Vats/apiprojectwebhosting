@@ -36,6 +36,11 @@ const resourceSchema = new mongoose.Schema({
     Subject:{
     type:String,
     Required:true,
+    },
+    
+    Resource_url:{
+        type:String,
+        Required:true
     }
 })
 

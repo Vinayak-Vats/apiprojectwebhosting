@@ -59,7 +59,19 @@ const coachSchema = new mongoose.Schema({
                 throw new Error("Invalid Email")
             }
         }
-     }
+     },
+     Image_url:{
+        type:String,
+        Required:true
+    },
+    Website:{
+        type:String,
+        Required:true
+    },
+    Mission:{
+        type:String,
+        Required:true
+    }
      })
 
 //creating a new collection
