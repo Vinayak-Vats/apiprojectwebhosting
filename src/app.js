@@ -35,80 +35,65 @@ app.use(express.json());
 // })
 
 //USING ASYNC AWAIT FOR COACHING
-// app.post("/coaching",async(req,res) => {
-//     const user = new Coaching(req.body);
+app.post("/createcoaching",async(req,res) => {
+    const user = new Coaching(req.body);
 
-// try{
-//     const user = new Coaching(req.body);
-//     const createUser = await user.save();
-//     res.status(201).send(createUser);
+try{
+    const user = new Coaching(req.body);
+    const createUser = await user.save();
+    res.status(201).send(createUser);
 
-// }catch(e){ res.status(400).send(e);}
+}catch(e){ res.status(400).send(e);}
 
-// })
-
-// app.listen(port,() => {
-//     console.log(`listening at ${port}`);
-//   })              
-
-
+})
+              
 
 //USING ASYNC AWAIT FOR RESOURCES
-// app.post("/resources",async(req,res) => {
-//     const user = new Resource(req.body);
+app.post("/createresources",async(req,res) => {
+    const user = new Resource(req.body);
 
-// try{
-//     const user = new Resource(req.body);
-//     const createUser = await user.save();
-//     res.status(201).send(createUser);
+try{
+    const user = new Resource(req.body);
+    const createUser = await user.save();
+    res.status(201).send(createUser);
 
-// }catch(e){ res.status(400).send(e);}
+}catch(e){ res.status(400).send(e);}
 
-// })
+})
+          
 
-// app.listen(port,() => {
-//     console.log(`listening at ${port}`);
-//   })          
 
-  //USING ASYNC AWAIT FOR exams
-// app.post("/exams",async(req,res) => {
-//     const user = new Exam(req.body);
+//USING ASYNC AWAIT FOR exams
+app.post("/createexams",async(req,res) => {
+    const user = new Exam(req.body);
 
-// try{
-//     const user = new Exam(req.body);
-//     const createUser = await user.save();
-//     res.status(201).send(createUser);
+try{
+    const user = new Exam(req.body);
+    const createUser = await user.save();
+    res.status(201).send(createUser);
 
-// }catch(e){ res.status(400).send(e);}
+}catch(e){ res.status(400).send(e);}
 
-// })
-
-// app.listen(port,() => {
-//     console.log(`listening at ${port}`);
-//   }) 
+})
 
 
 // POST USING ASYNC AWAIT FOR SIGN UP PAGE
-//  app.post("/sign_up",async(req,res) => {
-//      const user = new Sign_up(req.body);
+ app.post("/createsign_up",async(req,res) => {
+     const user = new Sign_up(req.body);
 
-//  try{
-//      const user = new Sign_up(req.body);
-//      const createUser = await user.save();
-//      res.status(201).send(createUser);
+ try{
+     const user = new Sign_up(req.body);
+     const createUser = await user.save();
+     res.status(201).send(createUser);
 
-//  }catch(e){ res.status(400).send(e);}
+ }catch(e){ res.status(400).send(e);}
 
-//  })
-
-//  app.listen(port,() => {
-//      console.log(`listening at ${port}`);
-//    }) 
+ })
 
 
   
 
-// //   reading data of registered coaching(i.e. handling GET request). this will give us all the data
+//Reading data of registered coaching(i.e. handling GET request). this will give us all the data
 
   app.get("/coaching",async(req,res) => {
 
@@ -119,13 +104,9 @@ app.use(express.json());
     }catch(e){ res.status(400).send(e);}
 
 })
+  
 
-
-//  app.listen(port,() => {
-//           console.log(`listening at ${port}`);
-//         })  
-
-// reading data of exams (i.e. handling GET request). this will give us all the data
+// Reading data of exams (i.e. handling GET request). this will give us all the data
 
 app.get("/exams",async(req,res) => {
 
@@ -135,14 +116,9 @@ app.get("/exams",async(req,res) => {
 
     }catch(e){ res.status(400).send(e);}
 
-})
+}) 
 
-
-//  app.listen(port,() => {
-//           console.log(`listening at ${port}`);
-//         }) 
-
-// reading data of resources (i.e. handling GET request). this will give us all the data
+// Reading data of resources (i.e. handling GET request). this will give us all the data
 
 app.get("/resources",async(req,res) => {
 
@@ -154,12 +130,7 @@ app.get("/resources",async(req,res) => {
 
 })
 
-
-//  app.listen(port,() => {
-//           console.log(`listening at ${port}`);
-//        }) 
-
-//  GETTING DATA FOR THE SIGN UP PAGE
+// GETTING DATA FOR THE SIGN UP PAGE
 app.get("/sign_up",async(req,res) => {
 
   try{
@@ -171,13 +142,7 @@ app.get("/sign_up",async(req,res) => {
 })
 
 
-// app.listen(port,() => {
-//         console.log(`listening at ${port}`);
-//       }) 
-    
-
-
-// getting data of individual coaching
+// Getting data of individual coaching
   app.get("/coaching/:id",async(req,res) => {
 
   try{
@@ -195,12 +160,7 @@ app.get("/sign_up",async(req,res) => {
 })
 
 
-//  app.listen(port,() => {
-//         console.log(`listening at ${port}`);
-//       })  
-
-
-// //getting data of individual exam
+// Getting data of individual exam
 app.get("/exams/:id",async(req,res) => {
 
   try{
@@ -218,11 +178,8 @@ app.get("/exams/:id",async(req,res) => {
 })
 
 
-//  app.listen(port,() => {
-//         console.log(`listening at ${port}`);
-//       })  
 
-// getting data of individual resource
+// Getting data of individual resource
 app.get("/resources/:id",async(req,res) => {
 
   try{
