@@ -3,8 +3,7 @@ const validator = require ("validator");
 
 const resourceSchema = new mongoose.Schema({
     Book_Name : {type:String,
-            Required:true,
-            minlength:4 ,                  //setting minimum length . only used for a string
+            Required:true
      },     
             
     

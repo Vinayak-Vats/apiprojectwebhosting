@@ -90,6 +90,19 @@ try{
 
  })
 
+ // POST USING ASYNC AWAIT FOR login PAGE
+ app.post("/createlogin",async(req,res) => {
+  const user = new Login(req.body);
+
+try{
+  const user = new Login(req.body);
+  const createUser = await user.save();
+  res.status(201).send(createUser);
+
+}catch(e){ res.status(400).send(e);}
+
+})
+
 
   
 
@@ -136,6 +149,17 @@ app.get("/sign_up",async(req,res) => {
   try{
   const sign_upData = await Sign_up.find();
   res.status(200).send(sign_upData);
+
+  }catch(e){ res.status(400).send(e);}
+
+})
+
+// GETTING DATA FOR THE LOGIN PAGE
+app.get("/login",async(req,res) => {
+
+  try{
+  const loginData = await Login.find();
+  res.status(200).send(loginData);
 
   }catch(e){ res.status(400).send(e);}
 

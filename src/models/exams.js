@@ -4,8 +4,7 @@ const validator = require ("validator");
 const examschema = new mongoose.Schema({
     Exam_Name : {type:String,
             Required:true,
-            minlength:4 ,                  //setting minimum length . only used for a string
-            maxlength:30 },                //setting maximum length . only used for a string
+    },
             
     
     Date: {
